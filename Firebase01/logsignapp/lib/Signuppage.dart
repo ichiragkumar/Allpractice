@@ -1,31 +1,24 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:logsignapp/Signuppage.dart';
 
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
 
+    List images = [
+      "g.png",
+      "t.png",
+      "f.png"
+
+    ];
+
     double W = MediaQuery.of(context).size.width;
     double H = MediaQuery.of(context).size.height;
+    
     return Scaffold(
-
-
-      backgroundColor: Colors.white
-      ,
-
-     
-
-
 
       body: Column(
         children: [
@@ -39,12 +32,27 @@ class _LoginPageState extends State<LoginPage> {
 
                 image: DecorationImage(
                   image: AssetImage(
-                    "assets/img/loginimg.png"
+                    "assets/img/signup.png"
                   ),
                   fit: BoxFit.cover
                   )
                   
 
+              ),
+
+              child: Column(
+
+                children: [
+                  SizedBox(height: H*0.16,),
+
+                  CircleAvatar(
+                    backgroundColor: Colors.white70,
+
+
+                    radius: 60,
+                    backgroundImage: AssetImage("assets/img/profile.png"),
+                  )
+                ],
               ),
 
 
@@ -58,14 +66,16 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  Text("Hello", 
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),),
+                  Center(
+                    child: Text("Welcome !", 
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),),
+                  ),
 
 
 
-                  Text("Sign In To Your Account", 
+                  Text("Create Your Account", 
                      style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w100,
@@ -93,6 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "Username or Email",
+                        prefixIcon: Icon(Icons.email, color: Colors.deepOrangeAccent,),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.white,
@@ -127,6 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "Password",
+                        prefixIcon: Icon(Icons.password, color: Colors.orangeAccent,),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.white,
@@ -192,7 +204,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child:  Center(
                 
-                child: Text("Sign In", 
+                child: Text("Sign Up", 
                 
                         style: TextStyle(
                         color: Colors.white,
@@ -209,37 +221,48 @@ class _LoginPageState extends State<LoginPage> {
 
             RichText(text: TextSpan(
 
-              text: "Don'n\t Have an Account?",
+              text: "Sign Up With...",
               style: TextStyle(
 
-                color:Colors.grey[500],
+                color:Colors.black87,
                 fontSize: 20
               ),
 
-              children: [
+            
+              
+            )),
 
-                TextSpan(
+            Wrap(
 
-              text: " Crete Account",
-              style: TextStyle(
-
-                color:Colors.blue[500],
-                fontSize: 25,
-                fontWeight: FontWeight.bold
+              children:List<Widget>.generate(3, (index) => Padding(
+                padding: EdgeInsets.all(10),
+                child: CircleAvatar(
+                  radius:35,
+                  backgroundColor: Colors.grey[500],
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage("assets/img/" + images[index]),
                 
-              ),
-              recognizer: TapGestureRecognizer()..onTap=(){
-                Get.to(()=>SignUpPage());
-              }
-                )
+                
+                  ),
+                ),
+              ))
+
+              
+
+            )
+        
 
 
 
-
-
-              ]
-            ))
+            
+            
             ])
+
+
+            
+
+
     );
   }
 }
