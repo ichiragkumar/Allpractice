@@ -1,11 +1,14 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:puja23/chat_page.dart';
+import "login_page.dart";
 
 void main(){
 
 
   runApp( ChatApp());
+
+  
 }
 
 
@@ -26,41 +29,36 @@ class ChatApp extends StatelessWidget{
         primarySwatch: Colors.yellow
       ),
 
-      home: LoginPage(),
+      home: PagesScreen(),
 
     );
   }
 
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+
+class PagesScreen extends StatefulWidget {
+  const PagesScreen({super.key});
 
   @override
+  State<PagesScreen> createState() => _PagesScreenState();
+}
+
+class _PagesScreenState extends State<PagesScreen> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text("hello world"),),
+    return PageView(
+        children: [
 
-        drawer: Drawer(
-          backgroundColor: Colors.red
-        ),
-
-
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){
-            print("hello world");
-          },
-          child: Icon(Icons.home),
-        ),
-
-
-        body: Column(
-
-
-        )
+          LoginPage(),
+          ChatScreen(),
           
 
           
-      );
+        ],
+
+
+    );
+
   }
 }
