@@ -210,7 +210,7 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(
 
                 color:Colors.grey[500],
-                fontSize: 10
+                fontSize: 20
               ),
 
               children: [
@@ -221,7 +221,7 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(
 
                 color:Colors.blue[500],
-                fontSize: 15
+                fontSize: 25
               ),
                 )
 
