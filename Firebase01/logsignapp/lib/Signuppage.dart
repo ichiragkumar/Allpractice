@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logsignapp/auth_controller.dart';
 
 
 
@@ -7,6 +8,9 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var emailController  = TextEditingController();
+    var passwordController =  TextEditingController();
 
     List images = [
       "g.png",
@@ -101,6 +105,7 @@ class SignUpPage extends StatelessWidget {
                       ]
                      ),
                     child: TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         hintText: "Username or Email",
                         prefixIcon: Icon(Icons.email, color: Colors.deepOrangeAccent,),
@@ -136,6 +141,7 @@ class SignUpPage extends StatelessWidget {
                       ]
                      ),
                     child: TextField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                         hintText: "Password",
                         prefixIcon: Icon(Icons.password, color: Colors.orangeAccent,),
@@ -186,35 +192,40 @@ class SignUpPage extends StatelessWidget {
             ,
             SizedBox(height: 20,),
 
-            Container(
-
-              width: W*0.7,
-              height: H*0.08,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-
-                image: DecorationImage(
-                  image: AssetImage(
-                    "assets/img/loginbtn.png"
-                  ),
-                  fit: BoxFit.cover
-                  )
+            GestureDetector(
+              onTap: (){
+                AuthController.instance.register(emailController.text.trim(), passwordController.text.trim());
+              },
+              child: Container(
+            
+                width: W*0.7,
+                height: H*0.08,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+            
+                  image: DecorationImage(
+                    image: AssetImage(
+                      "assets/img/loginbtn.png"
+                    ),
+                    fit: BoxFit.cover
+                    )
+                    
+            
+                ),
+                child:  Center(
                   
-
+                  child: Text("Sign Up", 
+                  
+                          style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 34,
+                          fontWeight: FontWeight.bold),),
+                )
+                ,
+            
+            
+            
               ),
-              child:  Center(
-                
-                child: Text("Sign Up", 
-                
-                        style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 34,
-                        fontWeight: FontWeight.bold),),
-              )
-              ,
-
-
-
             ),
 
             SizedBox(height: W*0.2,),

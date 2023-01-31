@@ -8,7 +8,8 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+    throw new FileNotFoundException()
+("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -21,11 +22,23 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+
+// plugins {
+//   id 'com.android.application'
+
+//   // Add the Google services Gradle plugin
+//   id 'com.google.gms.google-services'
+
+
+// }
 apply plugin: 'com.android.application'
+// --
+// apply plugin: 'com.google.gms.google-services'
+
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-android {
+// android {
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -44,13 +57,18 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.logsignapp"
+        // applicationId "com.example.logsignapp"
+
+        // applicationId "com.db.dbestech.flutterFirebaseApp"
+        applicationId ""
+
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        MultiDexEnable true
     }
 
     buildTypes {
@@ -60,7 +78,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-}
+// }
 
 flutter {
     source '../..'
@@ -68,4 +86,36 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform('com.google.firebase:firebase-bom:31.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.android.support:multidex:1.0.3'
+
+}
+
+
+buildscript {
+  repositories {
+    // Make sure that you have the following two repositories
+    google()  // Google's Maven repository
+
+    mavenCentral()  // Maven Central repository
+
+  }
+  dependencies {
+    
+    // Add the dependency for the Google services Gradle plugin
+    classpath 'com.google.gms:google-services:4.3.15'
+
+  }
+}
+
+allprojects {
+
+  repositories {
+    // Make sure that you have the following two repositories
+    google()  // Google's Maven repository
+
+    mavenCentral()  // Maven Central repository
+
+  }
 }

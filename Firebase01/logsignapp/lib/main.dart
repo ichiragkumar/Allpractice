@@ -1,13 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:logsignapp/Signuppage.dart';
+import 'package:logsignapp/auth_controller.dart';
 import 'package:logsignapp/login_page.dart';
 import 'package:logsignapp/welcome_page.dart';
 
 
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp().then((value) =>Get.put(AuthController()));
   runApp(const MyApp());
 }
 
