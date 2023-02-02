@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "782057585117",
+    "project_id": "fir-02-mitchkoko",
+    "storage_bucket": "fir-02-mitchkoko.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782057585117:android:6aaad2122843bb50731e34",
+        "android_client_info": {
+          "package_name": "com.example.firebaselearn02"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "782057585117-4qph5jdlhv8mj2tptf565fem82rncvvm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSt01RVs4-QGpH-HxX2FP2RTPOdoR9tLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "782057585117-4qph5jdlhv8mj2tptf565fem82rncvvm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
